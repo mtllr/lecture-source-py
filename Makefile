@@ -9,6 +9,7 @@ SOURCEDIR     = source/rst
 BUILDDIR      = _build
 CORES 		  = 4
 BUILDCOVERAGE = _build_coverage
+BUILDPDF      = _build_pdf
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -47,6 +48,9 @@ coverage-parallel: clean-coverage
 
 jupyter-parallel:
 	@$(SPHINXBUILD) -M jupyter "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -D jupyter_number_workers=$(CORES)
+
+jupyterpdf:
+	@$(SPHINXBUILD) -M jupyterpdf "$(SOURCEDIR)" "$(BUILDPDF)" $(SPHINXOPTS) $(O) -D jupyter_number_workers=$(CORES)
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

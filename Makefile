@@ -1,15 +1,18 @@
-# Minimal makefile for Sphinx documentation
+SHELL := bash
+#
+# Makefile for Sphinx Extension Test Cases
 #
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = lecture-source-jl
+SPHINXPROJ    = lecture-source-py
 SOURCEDIR     = source/rst
 BUILDDIR      = _build
+BUILDWEBSITE  = _build/website
 CORES 		  = 4
-BUILDCOVERAGE = _build_coverage
-BUILDPDF      = _build_pdf
+BUILDCOVERAGE = _build/coverage
+BUILDPDF      = _build/pdf
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -40,6 +43,12 @@ preview:
 clean-coverage:
 	rm -rf $(BUILDCOVERAGE)
 
+clean-website:
+	rm -rf $(BUILDWEBSITE)
+
+clean-pdf:
+	rm -rf $(BUILDPDF)
+
 coverage: clean-coverage
 	@$(SPHINXBUILD) -M jupyter "$(SOURCEDIR)" "$(BUILDCOVERAGE)" $(SPHINXOPTS) $(O) -D jupyter_make_coverage=1 -D jupyter_make_site=0 -D jupyter_generate_html=0 -D jupyter_ignore_skip_test=0 -D jupyter_download_nb=0 
 
@@ -49,7 +58,7 @@ coverage-parallel: clean-coverage
 jupyter-parallel:
 	@$(SPHINXBUILD) -M jupyter "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -D jupyter_number_workers=$(CORES)
 
-jupyterpdf:
+pdf:
 	@$(SPHINXBUILD) -M jupyterpdf "$(SOURCEDIR)" "$(BUILDPDF)" $(SPHINXOPTS) $(O) -D jupyter_number_workers=$(CORES)
 
 # Catch-all target: route all unknown targets to Sphinx using the new

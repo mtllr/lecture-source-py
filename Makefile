@@ -63,7 +63,7 @@ notebooks:
 	make jupyter
 
 pdf:
-	@$(SPHINXBUILD) -M jupyterpdf "$(SOURCEDIR)" "$(BUILDPDF)" $(SPHINXOPTS) $(O) -D jupyter_number_workers=$(CORES)
+	@$(SPHINXBUILD) -M jupyterpdf "$(SOURCEDIR)" "$(BUILDPDF)" $(SPHINXOPTS) $(O) -D jupyter_latex_template="theme/templates/latex.tpl" -D jupyter_number_workers=$(CORES)
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

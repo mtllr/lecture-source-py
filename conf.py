@@ -435,6 +435,9 @@ jupyter_generate_html = False
 # html template specific to your website needs
 jupyter_html_template = ""
 
+# latex template specific to your website needs
+jupyter_latex_template = ""
+
 #make website
 jupyter_make_site = False
 

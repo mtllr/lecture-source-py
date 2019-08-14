@@ -2,9 +2,9 @@
 
 .. include:: /_static/includes/header.raw
 
-*******************************
+******************************
 :index:`Pandas for Panel Data`
-*******************************
+******************************
 
 .. index::
     single: Python; Pandas
@@ -13,7 +13,7 @@
 
 
 Overview
-=====================
+========
 
 In an :doc:`earlier lecture on pandas <pandas>`, we looked at working with simple data sets.
 
@@ -21,11 +21,11 @@ Econometricians often need to work with more complex data sets, such as panels.
 
 Common tasks include
 
-* Importing data, cleaning it and reshaping it across several axes
+* Importing data, cleaning it and reshaping it across several axes.
 
-* Selecting a time series or cross-section from a panel
+* Selecting a time series or cross-section from a panel.
 
-* Grouping and summarizing data
+* Grouping and summarizing data.
 
 ``pandas`` (derived from 'panel' and 'data') contains powerful and
 easy-to-use tools for solving exactly these kinds of problems.
@@ -380,7 +380,7 @@ Grouping and summarizing data can be particularly useful for
 understanding large panel datasets.
 
 A simple way to summarize data is to call an `aggregation
-method <http://pandas.pydata.org/pandas-docs/stable/basics.html#descriptive-statistics>`__
+method <https://pandas.pydata.org/pandas-docs/stable/getting_started/basics.html#descriptive-statistics>`__
 on the dataframe, such as ``.mean()`` or ``.max()``.
 
 For example, we can calculate the average real minimum wage for each
@@ -527,7 +527,7 @@ object
 
 
 Final Remarks
-==============
+=============
 
 This lecture has provided an introduction to some of pandas' more
 advanced features, including multiindices, merging, grouping and
@@ -540,7 +540,7 @@ Exercises
 =========
 
 Exercise 1
--------------
+----------
 
 In these exercises, you'll work with a dataset of employment rates
 in Europe by age and sex from `Eurostat <http://ec.europa.eu/eurostat/data/database>`__.
@@ -566,7 +566,7 @@ Start off by exploring the dataframe and the variables available in the
 Write a program that quickly returns all values in the ``MultiIndex``.
 
 Exercise 2
--------------
+----------
 
 Filter the above dataframe to only include employment as a percentage of
 'active population'.
@@ -582,7 +582,7 @@ Solutions
 =========
 
 Exercise 1
------------
+----------
 
 .. code-block:: python3
 
@@ -611,7 +611,7 @@ Variables within levels can be quickly retrieved with a loop
 
 
 Exercise 2
----------------
+----------
 
 To easily filter by country, swap ``GEO`` to the top level and sort the
 ``MultiIndex``

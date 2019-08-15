@@ -18,6 +18,7 @@
 ((* block packages *))
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage[breakable]{tcolorbox}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
 % are scaled down if they would overflow the margins.

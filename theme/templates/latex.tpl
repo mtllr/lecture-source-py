@@ -63,6 +63,15 @@
 \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
                             % normalem makes italics be italics, not underlines
 \usepackage{braket}
+\usepackage{mathrsfs}   
+\usepackage{natbib}    
+\usepackage[document]{ragged2e}    
+\usepackage{fontspec, unicode-math}    
+\usepackage{xunicode}   
+\setmonofont{LiberationMono}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\DeclareMathOperator{\col}{col}
 ((* endblock packages *))
 
 %===============================================================================
@@ -156,5 +165,7 @@
 % requires file references.bib in current directory (or the file set as "bib" in the latex_metadata)
 
 ((* block bibliography *))
+% Add a bibliography block to the postdoc
+\bibliographystyle{plain}
 \bibliography{((( nb.metadata.get("latex_metadata", {}).get("bib", "references") )))}
 ((* endblock bibliography *))

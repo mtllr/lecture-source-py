@@ -11,6 +11,12 @@
 
 .. contents:: :depth: 2
 
+In addition to what’s in Anaconda, this lecture will need the following libraries:
+
+.. code-block:: ipython
+
+    !pip install --upgrade pandas-datareader
+
 Overview
 ============
 
@@ -376,16 +382,16 @@ Please note pandas offers many other file type alternatives than reading csv dat
 
 .. code-block:: python3
 
-	url = '"http://www.statweb.provincia.tn.it/indicatoristrutturali/exp.aspx?fmt=json&idind=102&t=n"'
+	url = "http://www.statweb.provincia.tn.it/indicatoristrutturali/exp.aspx?fmt=json&idind=102&t=n"
 	json = requests.get(url).json()
-	df = pd.DataFRAME(json['Spesa pubblica totale'])
+	df = pd.DataFrame(json['Spesa pubblica totale'])
 	df.head()
 
-Using pandas_datareader to access data
---------------------------------------
+Using :index:`pandas_datareader` to access data
+-----------------------------------------------
 
 .. index::
-    single: Pandas; Accessing Data
+    single: Python; pandas-datareader
 
 The maker of pandas has also authored a library that gives programmatic access to many data sources straight from the jupyter notebook. Some sources might require an access key and some are premium sources but among the most important, such as FRED, OECD, EUROSTAT and the World Bank are free to use. We recommend consulting the `documentation <https://pandas-datareader.readthedocs.io/en/latest/index.html>`_ for a detailed view how to
 access the sources.
@@ -401,10 +407,13 @@ The next code example fetches the data for you and plots time series for the US 
 
 .. code-block:: python3
 
-    # == Get data and plot in 3 lines == #
     from pandas_datareader import wb
-    govt_debt = wb.download(indicator='GC.DOD.TOTL.GD.ZS', country=['US', 'AU'], start=2005, end=2016)
-    govt_debt.plot(lw=2)
+
+    govt_debt = wb.download(indicator='GC.DOD.TOTL.GD.ZS', country=['US', 'AU'], start=2005, end=2016).stack().unstack(0)
+    ind = govt_debt.index.droplevel(-1)
+    govt_debt.index = ind
+    ax = govt_debt.plot(lw=2)
+    plt.title("Government Debt to GDP (%)")
     plt.show()
 
 Exercises
